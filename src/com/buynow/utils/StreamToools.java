@@ -35,35 +35,6 @@ public class StreamToools {
 		return null;
 	}
 	
-	/**
-	 * 打开一个get方式请求
-	 * 获得输入流
-	 * @param urlStr 请求地址
-	 * @param timeout 请求超时时间
-	 * @return 从服务端获取的输入流
-	 * @throws IOException 
-	 */
-	public static InputStream openGetConnect(String urlStr,int timeout) throws IOException{
-		URL url = new URL(urlStr);
-		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-		conn.setConnectTimeout(timeout);
-		int code = conn.getResponseCode();
-		if(code == 200){
-			InputStream in = conn.getInputStream();
-			return in;
-		}
-		return null;
-	}
+
 	
-	public static void main(String[] args){
-		String urlStr = "http://119.29.241.112:8080/buynow/myAppData/FanSafe/FanSafe_update_info";
-		try {
-			InputStream in = openGetConnect(urlStr, 5000);
-			String content= getString(in);
-			System.out.println(content);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 }
